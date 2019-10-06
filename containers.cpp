@@ -12,6 +12,7 @@
 #include <stack>
 #include <queue>
 #include <map>
+#include <memory>
 
 int main(){
     std::initializer_list<int> init = {
@@ -25,12 +26,12 @@ int main(){
     std::cout << "vector[4] = " << vector[4] << std::endl;
     std::cout << "deque[4] = " << deque[4] << std::endl;
     //Все три контейнера позволяют эффективно получить доступ к первому или последнему элементу
-    std::cout << "Доступ к первому и последнему элементам" << std::endl;
+    std::cout <<"-------------------\n"<<"Доступ к первому и последнему элементам" << std::endl;
     std::cout << "Первый vector: " << vector.front() << "\nПоследний vector: " << vector.back() << std::endl;
     std::cout << "Первый list: " << list.front() <<  "\nПоследний list: " << list.back() << std::endl;
     std::cout << "Первый deque: " << deque.front() <<  "\nПоследний deque: " << deque.back() << std::endl;
     //vector не позволяет добавлять элементы в начало
-    std::cout << "Добавление в начало - 19 (кроме вектора), в конец - 98" << std::endl;
+    std::cout << "-------------------\n" << "Добавление в начало - 19 (кроме вектора), в конец - 98" << std::endl;
     deque.push_back(19);
     deque.push_front(98);
     list.push_back(19);
@@ -57,7 +58,7 @@ int main(){
 
     std::stack<int> stack;
 
-    std::cout << "Заполним stack от 0 до 9:" << std::endl;
+    std::cout <<"-------------------\n"<< "Заполним stack от 0 до 9:" << std::endl;
     for (int i = 0; i < 10; i++) {
         stack.push(i);
         std::cout << i << ' ';
@@ -73,7 +74,7 @@ int main(){
 
     std::queue<int> queue;
 
-    std::cout << "Заполним очередь от 0 до 9:" << std::endl;
+    std::cout <<"-------------------\n"<< "Заполним очередь от 0 до 9:" << std::endl;
     for (int i = 0; i < 10; i++) {
         queue.push(i);
         std::cout << i << ' ';
@@ -83,7 +84,7 @@ int main(){
     std::cout << "Послений элемент очереди: " << queue.back() << std::endl;
 
     std::priority_queue <int> priorityQueue;
-    std::cout << "Заполним priority_queue случайными числами:" << std::endl;
+    std::cout <<"-------------------\n"<< "Заполним priority_queue случайными числами:" << std::endl;
     int numbersForPrQueue[10] = {11, 22, 2, 4, 55, 3, 0, 92, 13, 5};
     for (int i = 0; i < 10; i++) {
         priorityQueue.push(numbersForPrQueue[i]);
@@ -98,11 +99,13 @@ int main(){
     }
     std::cout << std::endl;
 
-    std::cout << "Заполнение map" << std::endl;
+    std::cout <<"-------------------\n"<< "Заполнение map" << std::endl;
     auto map = std::map<int, int> {{0, 1}, {2, 3}, {4, 5}};
     for (auto & it : map) {
         std::cout << it.first << " " << it.second << std::endl;
     }
+    std::shared_ptr<Shape> rt{ new RightTriangle(0,0,5) };
+	std::shared_ptr<Shape> t{ new Text(0,0,"Фигура - текст", 0) };
 
     std::cout << "Изменение map" << std::endl;
     map[1] = 98;
@@ -111,5 +114,13 @@ int main(){
     for (auto & it : map) {
         std::cout << it.first << " " << it.second << std::endl;
     }
+    std::cout <<"-------------------\n"<< "Заполнение map фигурами" << std::endl;
+    auto mapFigures = std::map<std::string, std::shared_ptr<Shape>> {{"Правильный треугольник", rt},{"Текст", t}};
+    for (auto & it : mapFigures) {
+        std::cout <<"-------------------\n"<< it.first << ":\n" << *(it.second) <<"-------------------"<< std::endl;
+    }
+
+    //Алгоритм метод
+    std::cout<<"-------------------\n"<<"Map.find(\"Текст\"):\n"<< *(mapFigures.find("Текст")->second) << std::endl;
     return 0;
 }
