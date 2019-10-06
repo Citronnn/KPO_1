@@ -11,4 +11,6 @@ set (FIGURES
         RightTriangleRoundedCorners.cpp
         TriangleText.cpp
         )
-add_executable (main ${FIGURES} Main.cpp)
+add_executable (soloFigures ${FIGURES} Main.cpp)
+add_executable (containers ${FIGURES} containers.cpp)
+add_executable (myContainer ${FIGURES} myContainer.cpp)

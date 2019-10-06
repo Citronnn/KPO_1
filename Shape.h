@@ -4,8 +4,7 @@
 #include "headers.h"
 class Shape{
 public:
-    Shape() = default;
-    Shape(double x, double y):ang(0), cent(x,y), col(0,0,0){}
+    Shape(double x = 0, double y = 0):ang(0), cent(x,y), col(0,0,0){}
 
     virtual void changePos(double x, double y);
 

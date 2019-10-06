@@ -6,8 +6,7 @@
 #include "headers.h"
 class TriangleText : virtual public Text, virtual public RightTriangle{
 public:
-	TriangleText() = default;
-    TriangleText(double x, double y, double a, const std::string& newText, int newFontSize);
+    TriangleText(double x = 0, double y = 0, double a = 0, const std::string& newText = "", int newFontSize = 0);
 
     void changeSize(double k);
 

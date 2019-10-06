@@ -6,8 +6,7 @@
 
 class RightTriangleRoundedCorners: virtual public RightTriangle{
 public:
-	RightTriangleRoundedCorners() = default;
-    RightTriangleRoundedCorners(double x, double y, double a, double r);
+    RightTriangleRoundedCorners(double x=0, double y=0, double a=0, double r=0);
 
     void changeSize(double k) override;
 

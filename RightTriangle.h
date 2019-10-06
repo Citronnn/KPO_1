@@ -4,8 +4,7 @@
 
 class RightTriangle : virtual public Shape{
 public:
-	RightTriangle() = default;
-    RightTriangle(double x, double y, double a);
+    RightTriangle(double x = 0, double y = 0, double a = 0);
 
     void changeSize(double k) override;
 
