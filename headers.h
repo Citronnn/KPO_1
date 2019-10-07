@@ -4,6 +4,10 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <algorithm>
+#include <string>
+#include <memory>
+
 #include "Point.h"
 #include "Colour.h"
 
