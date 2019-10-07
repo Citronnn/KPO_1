@@ -9,13 +9,13 @@ public:
     const std::pair<int, T>& operator*()
     {
         if (isEmpty) {
-			throw QueueInvalidIterator("iterator is invalid");
+			throw QueueInvalidIterator(isEmpty);
 		}
         return *ptr;
     }
     const typename std::vector<std::pair<int, T>>::reverse_iterator operator->() {
         if (isEmpty) {
-			throw QueueInvalidIterator("iterator is invalid");
+			throw QueueInvalidIterator(isEmpty);
 		}
         return ptr;
     }
@@ -69,13 +69,13 @@ public:
     }
     void pop() {
          if (empty()) {
-			throw QueueBlank("queue is empty");
+			throw QueueBlank(elements);
 		}
         elements.pop_back();
     }
     T const& top() const {
         if (empty()) {
-			throw QueueBlank("queue is empty");
+			throw QueueBlank(elements);
 		}
         std::cout <<  elements.back().first << std::endl;
         return elements.back().second;

@@ -2,26 +2,28 @@
 class QueueException {
 public:
 	QueueException() = default;
-	inline QueueException(const std::string& msg)
-		: _msg(msg) {}
+	inline QueueException(const std::string& info)
+		: info(info) {}
 
 	inline std::string what() const {
-		return _msg;
+		return info;
 	}
 
 protected:
-	std::string _msg;
+	std::string info;
 };
-
 
 class QueueInvalidIterator : public QueueException {
 public:
-	inline QueueInvalidIterator(const std::string& msg)
-		: QueueException(msg) {}
+	inline QueueInvalidIterator(const bool isEmpty) {
+		info = "QueueInvalidIterator";
+	}
 };
 
+template <typename T>
 class QueueBlank: public QueueException {
 public:
-	inline QueueBlank(const std::string& msg)
-		: QueueException(msg) {}
+	inline QueueBlank(const std::vector<std::pair<int, T>>& queue) {
+		info = "QueueBlank";
+	}
 };
