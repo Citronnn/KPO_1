@@ -1,7 +1,7 @@
 
 project(lr1kpo)
 
-set(CMAKE_CXX_FLAGS "-std=c++17")
+set(CMAKE_CXX_FLAGS "-pg -std=c++17")
 
 
 set (FIGURES

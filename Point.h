@@ -1,6 +1,7 @@
 #pragma once
-struct Point{
+class Point {
+public:
+    Point(double x, double y): x(x),y(y){}
     double x;
     double y;
-    Point(double x, double y): x(x),y(y){}
 };

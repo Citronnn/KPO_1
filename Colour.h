@@ -1,5 +1,6 @@
 #pragma once
-struct Colour{
+class Colour{
+public:
     short r;
     short g;
     short b;
