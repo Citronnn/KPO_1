@@ -6,16 +6,16 @@ template <typename T>
 class PriorityQueueIterator {
 public:
     PriorityQueueIterator (typename std::vector<std::pair<int, T>>::reverse_iterator ptr_, bool empty) : ptr(ptr_), isEmpty(empty) {}
-    const std::pair<int, T>& operator*()
+    std::pair<int, T>& operator*()
     {
         if (isEmpty) {
-			throw QueueInvalidIterator(isEmpty);
+			throw QueueInvalidIterator<T>(isEmpty, ptr);
 		}
         return *ptr;
     }
     const typename std::vector<std::pair<int, T>>::reverse_iterator operator->() {
         if (isEmpty) {
-			throw QueueInvalidIterator(isEmpty);
+			throw QueueInvalidIterator<T>(isEmpty, ptr);
 		}
         return ptr;
     }

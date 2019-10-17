@@ -2,28 +2,37 @@
 class QueueException {
 public:
 	QueueException() = default;
-	inline QueueException(const std::string& info)
-		: info(info) {}
-
-	inline std::string what() const {
-		return info;
-	}
-
-protected:
-	std::string info;
+	friend inline std::ostream &operator<<(std::ostream &out, QueueException &e){
+        e.print(out);
+        return out;
+	};
+	virtual void print(std::ostream& out) = 0;
+    virtual ~QueueException() = default;
 };
 
+template <typename T>
 class QueueInvalidIterator : public QueueException {
 public:
-	inline QueueInvalidIterator(const bool isEmpty) {
-		info = "QueueInvalidIterator";
+	inline QueueInvalidIterator(const bool isEmpty, typename std::vector<std::pair<int, T>>::reverse_iterator ptr): isEmpty(isEmpty), ptr(ptr) {
 	}
+	void print(std::ostream &out) {
+        out << "QueueInvalidIterator: " << &ptr;
+    }
+private:
+	typename std::vector<std::pair<int, T>>::reverse_iterator ptr;
+	bool isEmpty;
 };
 
 template <typename T>
 class QueueBlank: public QueueException {
 public:
-	inline QueueBlank(const std::vector<std::pair<int, T>>& queue) {
-		info = "QueueBlank";
+	inline QueueBlank(const std::vector<std::pair<int, T>>& queue): queue(queue) {
+		queueLength = queue.size();
 	}
+	void print(std::ostream &out) {
+        out << "QueueBlank: " << queueLength;
+    }
+private:
+	std::vector<std::pair<int, T>> queue;
+	std::size_t queueLength;
 };

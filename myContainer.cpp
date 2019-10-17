@@ -25,17 +25,17 @@ int main() {
     try {
         pq1.pop();
 	} catch (QueueException& e) {
-		std::cout << "Исключение " << '"' << e.what() << '"' << std::endl;
+		std::cout << "Исключение " << '"' << e<< '"' << std::endl;
 	}
 	try {
         pq1.top();
 	} catch (QueueException& e) {
-		std::cout << "Исключение " << '"' << e.what() << '"' << std::endl;
+		std::cout << "Исключение " << '"' << e << '"' << std::endl;
 	}
     try {
         std::cout << (*pq1.begin()).first << "  "<< (*(--pq1.end())).first << std::endl;
 	} catch (QueueException& e) {
-		std::cout << "Исключение " << '"' << e.what() << '"' << std::endl;
+		std::cout << "Исключение " << '"' << e << '"' << std::endl;
 	}
     return 0;
 }
